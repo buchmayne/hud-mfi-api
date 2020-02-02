@@ -1,0 +1,9 @@
+psycopg2-binary
+pandas
+xlrd
+flask
+flask-sqlalchemy
+marshmallow-sqlalchemy
+flask_script
+flask_migrate
+gunicorn
