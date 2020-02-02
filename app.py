@@ -25,7 +25,7 @@ def get_all():
 @app.route("/get/<geoid_>")
 def get_by_geoid(geoid_):
     try:
-        median_income = MFI.query.filter_by(GEOID=geoid_).first()
+        median_income = MFI.query.filter_by(geoid=geoid_).first()
         return jsonify(median_income.serialize())
     except Exception as e:
         return(str(e))
