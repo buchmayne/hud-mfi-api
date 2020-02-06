@@ -61,3 +61,5 @@ col_order = [
     'mfi_2018',
     'mfi_2019'
 ]
+
+# eroku pg:push $DATABASE_URL DATABASE_URL --app hud-mfi-api
