@@ -35,7 +35,7 @@ def get_by_geoid(geoid_):
 def get_by_state_code(state_code_):
     try:
         median_income = MFI.query.filter_by(state_code=state_code_).all()
-        return jsonify([i.serialize for i in median_income])
+        return jsonify([i.serialize() for i in median_income])
     except Exception as e:
         return(str(e))
 
