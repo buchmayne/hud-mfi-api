@@ -31,5 +31,32 @@ def get_by_geoid(geoid_):
         return(str(e))
 
 
+@app.route("/get/state_code/<state_code_>")
+def get_by_county_name(state_code_):
+    try:
+        median_income = MFI.query.filter_by(state_code=state_code_).all()
+        return jsonify(median_income.serialize())
+    except Exception as e:
+        return(str(e))
+
+
+@app.route("/get/state_name/<state_name_>")
+def get_by_county_name(state_name_):
+    try:
+        median_income = MFI.query.filter_by(state_name=state_name_).all()
+        return jsonify(median_income.serialize())
+    except Exception as e:
+        return(str(e))
+
+
+@app.route("/get/state/<state_>")
+def get_by_county_name(state_):
+    try:
+        median_income = MFI.query.filter_by(state=state_).all()
+        return jsonify(median_income.serialize())
+    except Exception as e:
+        return(str(e))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
