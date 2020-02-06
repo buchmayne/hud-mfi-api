@@ -22,7 +22,7 @@ def get_all():
         return(str(e))
 
 
-@app.route("/get/<geoid_>")
+@app.route("/get/fips/<geoid_>")
 def get_by_geoid(geoid_):
     try:
         median_income = MFI.query.filter_by(geoid=geoid_).first()
