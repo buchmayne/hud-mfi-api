@@ -32,7 +32,7 @@ def get_by_geoid(geoid_):
 
 
 @app.route("/get/state_code/<state_code_>")
-def get_by_county_name(state_code_):
+def get_by_state_code(state_code_):
     try:
         median_income = MFI.query.filter_by(state_code=state_code_).all()
         return jsonify(median_income.serialize())
@@ -41,7 +41,7 @@ def get_by_county_name(state_code_):
 
 
 @app.route("/get/state_name/<state_name_>")
-def get_by_county_name(state_name_):
+def get_by_state_name(state_name_):
     try:
         median_income = MFI.query.filter_by(state_name=state_name_).all()
         return jsonify(median_income.serialize())
@@ -50,7 +50,7 @@ def get_by_county_name(state_name_):
 
 
 @app.route("/get/state/<state_>")
-def get_by_county_name(state_):
+def get_by_state(state_):
     try:
         median_income = MFI.query.filter_by(state=state_).all()
         return jsonify(median_income.serialize())
