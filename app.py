@@ -59,7 +59,7 @@ def get_by_state(state_):
 
 
 # add routes for specifying county name
-@app.route("/get/state_name/<state_name_>/county/<string:county_>")
+@app.route("/get/state_long/<state_name_>/county/<string:county_>")
 def get_by_state_long_and_county_name(state_name_, county_):
     try:
         county_long = '{} County'.format(county_)
