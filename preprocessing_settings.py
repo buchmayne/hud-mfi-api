@@ -29,7 +29,8 @@ raw_names = {
     '16': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2016'],
     '17': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2017'],
     '18': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2018'],
-    '19': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2019']
+    '19': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2019'],
+    '20': ['State_Alpha', 'fips2010', 'State', 'County', 'County_Name', 'Metro_Area_Name', 'median2020']
 }
 
 territories = ['VI', 'UM', 'PR', 'MP', 'GU', 'AS']
@@ -59,7 +60,8 @@ col_order = [
     'mfi_2016',
     'mfi_2017',
     'mfi_2018',
-    'mfi_2019'
+    'mfi_2019',
+    'mfi_2020'
 ]
 
-# eroku pg:push $DATABASE_URL DATABASE_URL --app hud-mfi-api
+# heroku pg:push $DATABASE_URL DATABASE_URL --app hud-mfi-api
