@@ -10,9 +10,11 @@ The following documentation outlines the usage of a custom built API to solve th
 
 https://hud-mfi-api.herokuapp.com/
 
-The above URL is the address to access the API. Going to that address currently will bring an empty page, but this address is important because it serves as the prefix for other addresses that will return relevant data.
+The above URL is the address to access the API. Going to that address currently will bring up empty page, but this address is important because it serves as the prefix for other addresses that will return relevant data.
 
-### getall/
+### Get MFI for every county in the Nation
+
+`getall/`
 
 https://hud-mfi-api.herokuapp.com/getall
 
@@ -21,20 +23,22 @@ Going to this URL will return the data for every county.
 ### Get MFI for every County in a State
 
 The following addresses will return the county median family income estimates for every county within the user entered state. 
-get/state/USER_ENTERED_STATE_ABBREVIATION
+
+`get/state/USER_ENTERED_STATE_ABBREVIATION`
 
 https://hud-mfi-api.herokuapp.com/get/state/OR
 
 ### Get MFI for a single County
 
 Access to data for individual counties is also possible.
-get/fips/USER_ENTERED_COUNTY_FIPS_CODE
+
+`get/fips/USER_ENTERED_COUNTY_FIPS_CODE`
 
 https://hud-mfi-api.herokuapp.com/get/fips/41051
 
 If you know the five digit county fips code, you can pass that in after the "get/fips/" to access the data. The above example is for Multnomah County ("41051")
 
-get/state/USER_ENTERED_STATE_ABBREVIATION/county/USER_ENTERED_COUNTY_NAME
+`get/state/USER_ENTERED_STATE_ABBREVIATION/county/USER_ENTERED_COUNTY_NAME`
 
 https://hud-mfi-api.herokuapp.com/get/state/IL/county/Cook
 
