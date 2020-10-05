@@ -38,4 +38,4 @@ get/state/USER_ENTERED_STATE_ABBREVIATION/county/USER_ENTERED_COUNTY_NAME
 
 https://hud-mfi-api.herokuapp.com/get/state/IL/county/Cook
 
-To access county data by county name the user first has to pass in a state. This address is an extension of the get/state/ address. The county name has to be formatted in a specific way to work. It has to be capitalized, and including " County" will cause the URL to fail. Spaces are allowed, for example,
+To access county data by county name the user first has to pass in a state. This address is an extension of the get/state/ address. The county name has to be formatted in a specific way to work. It has to be capitalized, and including " County" at the end of the county name will cause the call to fail. 
