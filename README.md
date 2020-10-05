@@ -4,7 +4,7 @@ The Department of Housing and Urban Development (HUD) sets income limits that de
 
 HUD also provides an API (Application Programming Interface) that makes it easy to access median family income estimates for each U.S. county. However, the HUD API only provides access to the most recent year's median family income estimate. Often it is informative to analyze housing affordability through time which requires access to HUD's historical median family income estimates.
 
-The following documentation outlines the usage of a custom built API to solve this problem. This tool is in no way affiliated with HUD but provides a quick way to access HUD data for the years 2000 - 2019. It works as follows:
+The following documentation outlines the usage of a custom built API to solve this problem. This tool is in no way affiliated with HUD but provides a quick way to access HUD data for the years 2000 - 2020. It works as follows:
 
 ### Base URL
 
