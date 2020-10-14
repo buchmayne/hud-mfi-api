@@ -34,7 +34,6 @@ raw_names = {
 }
 
 territories = ['VI', 'UM', 'PR', 'MP', 'GU', 'AS']
-
 all_counties_df = pd.read_csv('data/fips.csv', dtype=str)
 
 folder_path = 'data/HUD_INCOME_LIMITS/'

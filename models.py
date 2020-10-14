@@ -1,6 +1,5 @@
 from app import db
 
-
 class MFI(db.Model):
     __tablename__ = 'mfi'
 
