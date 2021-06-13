@@ -30,6 +30,7 @@ class MFI(db.Model):
     mfi_2018 = db.Column(db.Integer())
     mfi_2019 = db.Column(db.Integer())
     mfi_2020 = db.Column(db.Integer())
+    mfi_2021 = db.Columb(db.Integer())
 
 
     def __init__(
@@ -60,7 +61,8 @@ class MFI(db.Model):
         mfi_2017,
         mfi_2018,
         mfi_2019,
-        mfi_2020
+        mfi_2020,
+        mfi_2021
         ):
         self.geoid = geoid
         self.state = state
@@ -89,6 +91,7 @@ class MFI(db.Model):
         self.mfi_2018 = mfi_2018
         self.mfi_2019 = mfi_2019
         self.mfi_2020 = mfi_2020
+        self.mfi_2021 = mfi_2021
 
     def __repr__(self):
         return '<geoid {}>'.format(self.geoid)
@@ -121,5 +124,6 @@ class MFI(db.Model):
             'mfi_2017': self.mfi_2017,
             'mfi_2018': self.mfi_2018,
             'mfi_2019': self.mfi_2019,
-            'mfi_2020': self.mfi_2020
+            'mfi_2020': self.mfi_2020,
+            'mfi_2021': self.mfi_2021
         }
