@@ -1,7 +1,9 @@
 from app import db
 
+
 class MFI(db.Model):
     __tablename__ = 'mfi'
+    __table_args__ = {'extend_existing': True}
 
     geoid = db.Column(db.String(), primary_key=True)
     state = db.Column(db.String())
