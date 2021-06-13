@@ -30,7 +30,7 @@ class MFI(db.Model):
     mfi_2018 = db.Column(db.Integer())
     mfi_2019 = db.Column(db.Integer())
     mfi_2020 = db.Column(db.Integer())
-    mfi_2021 = db.Columb(db.Integer())
+    mfi_2021 = db.Column(db.Integer())
 
 
     def __init__(
