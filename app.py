@@ -1,19 +1,16 @@
 import os
-
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config["DEBUG"] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-# from models import MFI
 class MFI(db.Model):
     __tablename__ = 'mfi'
-    __table_args__ = {'extend_existing': True}
 
     geoid = db.Column(db.String(), primary_key=True)
     state = db.Column(db.String())
@@ -43,7 +40,6 @@ class MFI(db.Model):
     mfi_2019 = db.Column(db.Integer())
     mfi_2020 = db.Column(db.Integer())
     mfi_2021 = db.Column(db.Integer())
-
 
     def __init__(
         self,
@@ -75,7 +71,7 @@ class MFI(db.Model):
         mfi_2019,
         mfi_2020,
         mfi_2021
-        ):
+    ):
         self.geoid = geoid
         self.state = state
         self.state_code = state_code
@@ -141,6 +137,11 @@ class MFI(db.Model):
         }
 
 
+@app.route('/', methods=['GET'])
+def home():
+    return """<h1>Go to <a href>https://github.com/buchmayne/hud-mfi-api#readme</a> for more information</h1>"""
+
+
 @app.route("/getall")
 def get_all():
     try:
@@ -191,7 +192,8 @@ def get_by_state(state_):
 def get_by_state_long_and_county_name(state_name_, county_):
     try:
         county_long = '{} County'.format(county_)
-        median_income = MFI.query.filter_by(state_name=state_name_).filter_by(county=county_long).first()
+        median_income = MFI.query.filter_by(
+            state_name=state_name_).filter_by(county=county_long).first()
         return jsonify(median_income.serialize())
     except Exception as e:
         return(str(e))
