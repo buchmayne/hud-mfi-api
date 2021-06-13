@@ -62,7 +62,8 @@ def load_ami_data(file_path):
 
 if __name__ == "__main__":
     county_fips = all_counties_df['GEOID'].tolist()
-    conn = create_engine(URL(**db))
+    # conn = create_engine(URL(**db))
+    conn = create_engine(os.environ.get("DATABASE_URL"))
 
     file_paths = [os.path.join(folder_path, file) for file in os.listdir(folder_path)]
     list_mfi_dfs = [load_ami_data(file_path) for file_path in file_paths]
