@@ -141,7 +141,31 @@ class MFI(db.Model):
 
 @app.route('/', methods=['GET'])
 def home():
-    return """<h1>Go to <a href>https://github.com/buchmayne/hud-mfi-api#readme</a> for more information</h1>"""
+    home_html = """<h1 id="hud-mfi-api-documentation">HUD-MFI-API Documentation</h1>
+    <p>The Department of Housing and Urban Development (HUD) sets income limits that determine eligibility for assisted housing programs including the Public Housing, Section 8 project-based, Section 8 Housing Choice Voucher, Section 202 housing for the elderly, and Section 811 housing for persons with disabilities programs. HUD develops income limits based on Median Family Income estimates and Fair Market Rent area definitions for each metropolitan area, parts of some metropolitan areas, and each non-metropolitan county.</p>
+    <p>HUD also provides an API (Application Programming Interface) that makes it easy to access median family income estimates for each U.S. county. However, the HUD API only provides access to the most recent year&#39;s median family income estimate. Often it is informative to analyze housing affordability through time which requires access to HUD&#39;s historical median family income estimates.</p>
+    <p>The following documentation outlines the usage of a custom built API to solve this problem. This tool is in no way affiliated with HUD but provides a quick way to access HUD data for the years 2000 - 2021. It works as follows:</p>
+    <h3 id="base-url">Base URL</h3>
+    <p><a href="https://hud-mfi-api.herokuapp.com/">https://hud-mfi-api.herokuapp.com/</a></p>
+    <p>The above URL is the address to access the API. Going to that address currently will bring up empty page, but this address is important because it serves as the prefix for other addresses that will return relevant data.</p>
+    <h3 id="get-mfi-for-every-county-in-the-nation">Get MFI for every county in the Nation</h3>
+    <p><code>getall/</code></p>
+    <p><a href="https://hud-mfi-api.herokuapp.com/getall">https://hud-mfi-api.herokuapp.com/getall</a></p>
+    <p>Going to this URL will return the data for every county.</p>
+    <h3 id="get-mfi-for-every-county-in-a-state">Get MFI for every County in a State</h3>
+    <p>The following addresses will return the county median family income estimates for every county within the user entered state. </p>
+    <p><code>get/state/USER_ENTERED_STATE_ABBREVIATION</code></p>
+    <p><a href="https://hud-mfi-api.herokuapp.com/get/state/OR">https://hud-mfi-api.herokuapp.com/get/state/OR</a></p>
+    <h3 id="get-mfi-for-a-single-county">Get MFI for a single County</h3>
+    <p>Access to data for individual counties is also possible.</p>
+    <p><code>get/fips/USER_ENTERED_COUNTY_FIPS_CODE</code></p>
+    <p><a href="https://hud-mfi-api.herokuapp.com/get/fips/41051">https://hud-mfi-api.herokuapp.com/get/fips/41051</a></p>
+    <p>If you know the five digit county fips code, you can pass that in after the &quot;get/fips/&quot; to access the data. The above example is for Multnomah County (&quot;41051&quot;)</p>
+    <p><code>get/state/USER_ENTERED_STATE_ABBREVIATION/county/USER_ENTERED_COUNTY_NAME</code></p>
+    <p><a href="https://hud-mfi-api.herokuapp.com/get/state/IL/county/Cook">https://hud-mfi-api.herokuapp.com/get/state/IL/county/Cook</a></p>
+    <p>To access county data by county name the user first has to pass in a state. This address is an extension of the get/state/ address. The county name has to be formatted in a specific way to work. It has to be capitalized, and including &quot; County&quot; at the end of the county name will cause the call to fail. </p>
+    """
+    return home_html
 
 
 @app.route("/getall")
