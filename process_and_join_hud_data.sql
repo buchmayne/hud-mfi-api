@@ -1,6 +1,3 @@
--- Still issues with the two counties in NY, need to apply same fix to 2012-2020
--- Can't just copy and paste and update years because the columns are different for
--- more recent years
 create table mficlean as
 select
 	raw_mfi_2021.state_alpha,
@@ -54,68 +51,248 @@ select
 	"median2001" as mfi2001,
 	"median2000" as mfi2000
 from raw_mfi_2021
-inner join (select
-				"state_name",
-				"county_name",
-				"median2020"
-			from raw_mfi_2020
-			) mfi2020
+inner join (
+	with row_number_idx_2020 as (
+		select
+			"state_name",
+			"county_name",
+		 	row_number() over(partition by state_name, county_name order by median2020 desc) as idx,
+			"median2020"
+		from raw_mfi_2020
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_name",
+		"median2020"
+	from row_number_idx_2020
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_name",
+		"median2020"
+	from raw_mfi_2020
+	where state_name != 'New York'
+	) mfi2020
 	on (raw_mfi_2021.state_name = mfi2020.state_name and raw_mfi_2021.county_name = mfi2020.county_name)
-inner join (select
-				"state_name",
-				"county_name",
-				"median2019"
-			from raw_mfi_2019
-			) mfi2019
+inner join (
+	with row_number_idx_2019 as (
+		select
+			"state_name",
+			"county_name",
+		 	row_number() over(partition by state_name, county_name order by median2019 desc) as idx,
+			"median2019"
+		from raw_mfi_2019
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_name",
+		"median2019"
+	from row_number_idx_2019
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_name",
+		"median2019"
+	from raw_mfi_2019
+	where state_name != 'New York'
+	) mfi2019
 	on (raw_mfi_2021.state_name = mfi2019.state_name and raw_mfi_2021.county_name = mfi2019.county_name)
-inner join (select
-				"state_name",
-				"county_name",
-				"median2018"
-			from raw_mfi_2018
-			) mfi2018
+inner join (
+	with row_number_idx_2018 as (
+		select
+			"state_name",
+			"county_name",
+		 	row_number() over(partition by state_name, county_name order by median2018 desc) as idx,
+			"median2018"
+		from raw_mfi_2018
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_name",
+		"median2018"
+	from row_number_idx_2018
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_name",
+		"median2018"
+	from raw_mfi_2018
+	where state_name != 'New York'
+	) mfi2018
 	on (raw_mfi_2021.state_name = mfi2018.state_name and raw_mfi_2021.county_name = mfi2018.county_name)
-inner join (select
-				"state_name",
-				"county_name",
-				"median2017"
-			from raw_mfi_2017
-			) mfi2017
+inner join (
+	with row_number_idx_2017 as (
+		select
+			"state_name",
+			"county_name",
+		 	row_number() over(partition by state_name, county_name order by median2017 desc) as idx,
+			"median2017"
+		from raw_mfi_2017
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_name",
+		"median2017"
+	from row_number_idx_2017
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_name",
+		"median2017"
+	from raw_mfi_2017
+	where state_name != 'New York'
+	) mfi2017
 	on (raw_mfi_2021.state_name = mfi2017.state_name and raw_mfi_2021.county_name = mfi2017.county_name)
-inner join (select
-				"state_name",
-				"county_town_name",
-				"median2016"
-			from raw_mfi_2016
-			) mfi2016
+inner join (
+	with row_number_idx_2016 as (
+		select
+			"state_name",
+			"county_town_name",
+		 	row_number() over(partition by state_name, county_town_name order by median2016 desc) as idx,
+			"median2016"
+		from raw_mfi_2016
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_town_name",
+		"median2016"
+	from row_number_idx_2016
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_town_name",
+		"median2016"
+	from raw_mfi_2016
+	where state_name != 'New York'
+	) mfi2016
 	on (raw_mfi_2021.state_name = mfi2016.state_name and raw_mfi_2021.county_name = mfi2016.county_town_name)
-inner join (select
-				"state_name",
-				"county_town_name",
-				"median2015"
-			from raw_mfi_2015
-			) mfi2015
+inner join (
+	with row_number_idx_2015 as (
+		select
+			"state_name",
+			"county_town_name",
+		 	row_number() over(partition by state_name, county_town_name order by median2015 desc) as idx,
+			"median2015"
+		from raw_mfi_2015
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_town_name",
+		"median2015"
+	from row_number_idx_2015
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_town_name",
+		"median2015"
+	from raw_mfi_2015
+	where state_name != 'New York'
+	) mfi2015
 	on (raw_mfi_2021.state_name = mfi2015.state_name and raw_mfi_2021.county_name = mfi2015.county_town_name)
-inner join (select
-				"state_name",
-				"county_town_name",
-				"median2014"
-			from raw_mfi_2014
-			) mfi2014
+inner join (
+	with row_number_idx_2014 as (
+		select
+			"state_name",
+			"county_town_name",
+		 	row_number() over(partition by state_name, county_town_name order by median2014 desc) as idx,
+			"median2014"
+		from raw_mfi_2014
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_town_name",
+		"median2014"
+	from row_number_idx_2014
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_town_name",
+		"median2014"
+	from raw_mfi_2014
+	where state_name != 'New York'
+	) mfi2014
 	on (raw_mfi_2021.state_name = mfi2014.state_name and raw_mfi_2021.county_name = mfi2014.county_town_name)
-inner join (select
-				"state_name",
-				"county_town_name",
-				"median2013"
-			from raw_mfi_2013
-			) mfi2013
+inner join (
+	with row_number_idx_2013 as (
+		select
+			"state_name",
+			"county_town_name",
+		 	row_number() over(partition by state_name, county_town_name order by median2013 desc) as idx,
+			"median2013"
+		from raw_mfi_2013
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_town_name",
+		"median2013"
+	from row_number_idx_2013
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_town_name",
+		"median2013"
+	from raw_mfi_2013
+	where state_name != 'New York'
+	) mfi2013
 	on (raw_mfi_2021.state_name = mfi2013.state_name and raw_mfi_2021.county_name = mfi2013.county_town_name)
-inner join (select
-				"state_name",
-				"county_town_name",
-				"median2012"
-			from raw_mfi_2012
-			) mfi2012
+inner join (
+	with row_number_idx_2012 as (
+		select
+			"state_name",
+			"county_town_name",
+		 	row_number() over(partition by state_name, county_town_name order by median2012 desc) as idx,
+			"median2012"
+		from raw_mfi_2012
+		where state_name = 'New York'
+	)
+	select 
+		"state_name",
+		"county_town_name",
+		"median2012"
+	from row_number_idx_2012
+	where idx = 1
+	
+	union all
+	
+	select 
+		"state_name",
+		"county_town_name",
+		"median2012"
+	from raw_mfi_2012
+	where state_name != 'New York'
+	) mfi2012
 	on (raw_mfi_2021.state_name = mfi2012.state_name and raw_mfi_2021.county_name = mfi2012.county_town_name)
 inner join (
 	with row_number_idx_2011 as (
