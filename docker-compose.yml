@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  backend:
+
+    null
+services:
+
+  postgres_db:
+    image: postgres
+    container_name: postgres_db
+    networks:
+      - backend
+    environment:
+      - bind-address=0.0.0.0
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+
+  python_app:
+    build: .
+    networks:
+      - backend
+    environment:
+      - DBHOST=postgres_db
+    depends_on:
+      - postgres_db
+    command: tail -f /dev/null
