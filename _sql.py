@@ -483,7 +483,7 @@ sql_queries = (
         on (raw_mfi_2021.state_alpha = mfi2000.statealpha and raw_mfi_2021.county_name = mfi2000.county_name)
     where raw_mfi_2021.state_alpha not in ('VI', 'UM', 'PR', 'MP', 'GU', 'AS')
     ;
-        """
+    """,
     """
         drop table 
             raw_mfi_2021,
@@ -508,5 +508,6 @@ sql_queries = (
             raw_mfi_2002,
             raw_mfi_2001,
             raw_mfi_2000
+        ;
         """,
 )

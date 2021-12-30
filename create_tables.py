@@ -70,7 +70,7 @@ if __name__ == "__main__":
     for k, v in mfi.items():
         write_raw_hud_income_limits_to_db(con=conn, tbl_name=k, hud_url=v)
 
-    print("All HUD income limits data added to database")
+    print("All HUD Income Limits data added to database")
 
     with conn.connect() as connection:
         for query in sql_queries:
