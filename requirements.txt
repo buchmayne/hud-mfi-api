@@ -4,3 +4,5 @@ xlrd
 SQLAlchemy
 openpyxl
 ipython
+fastapi
+uvicorn
