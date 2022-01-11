@@ -1,5 +1,5 @@
 import pandas as pd
-from sqlalchemy import create_engine, sql, text
+from sqlalchemy import create_engine, text
 from configparser import ConfigParser
 from sqlalchemy.engine.url import URL
 from _sql import sql_queries
