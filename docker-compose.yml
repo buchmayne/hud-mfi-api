@@ -24,4 +24,6 @@ services:
       - DBHOST=postgres_db
     depends_on:
       - postgres_db
+    ports:
+      - 8888:8888
     command: tail -f /dev/null
