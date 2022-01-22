@@ -26,4 +26,6 @@ services:
       - postgres_db
     ports:
       - 8888:8888
-    command: tail -f /dev/null
+    command: >
+      bash -c "sleep 30 && python create_tables.py && uvicorn main:app --host
+      0.0.0.0 --port 8888"
