@@ -27,13 +27,12 @@ Base = declarative_base()
 
 # models
 class MFI(Base):
-    __tablename__ = "mficlean"
+    __tablename__ = "mfifinal"
 
-    id = Column(Integer, primary_key=True, index=True)
     state_alpha = Column(String, unique=False)
     state_code = Column(String, unique=False)
     county_code = Column(String, unique=False)
-    geoid = Column(String, unique=True)
+    geoid = Column(String, unique=True, primary_key=True)
     metro_area_name = Column(String, unique=False)
     county_name = Column(String, unique=False)
     mfi2021 = Column(Integer)
@@ -78,16 +77,35 @@ def get_state_results_by_state_alpha(db: Session, state_alpha: str):
 
 
 # schemas
-class MFIBase(BaseModel):
-    title: str
-    description: Optional[str] = None
-
-
-class SchemaMFI(MFIBase):
-    id: int
+class SchemaMFI(BaseModel):
     state_alpha: str
-    geoid: str
-    county_name: str
+    geoid: Optional[str]
+    county_name: Optional[str]
+    state_code: str
+    county_code: str
+    metro_area_name: str
+    mfi2021: int
+    mfi2020: int
+    mfi2019: int
+    mfi2018: int
+    mfi2017: int
+    mfi2016: int
+    mfi2015: int
+    mfi2014: int
+    mfi2013: int
+    mfi2012: int
+    mfi2011: int
+    mfi2010: int
+    mfi2009: int
+    mfi2008: int
+    mfi2007: int
+    mfi2006: int
+    mfi2005: int
+    mfi2004: int
+    mfi2003: int
+    mfi2002: int
+    mfi2001: int
+    mfi2000: int
 
     class Config:
         orm_mode = True
@@ -109,7 +127,7 @@ def get_db():
 
 @app.get("/")
 async def root():
-    return {"message": "hello world"}
+    return {"message": "github.com/buchmayne/hud-mfi-api"}
 
 
 @app.get("/state/{state_alpha}", response_model=List[SchemaMFI])

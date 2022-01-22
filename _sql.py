@@ -485,6 +485,41 @@ sql_queries = (
     ;
     """,
     """
+        create table mfifinal as
+        select 
+            "state_alpha",
+            "state_name",
+            "state_code",
+            "county_code",
+            "geoid",
+            "metro_area_name",
+            replace("county_name", ' County', '') as "county_name",
+            "mfi2021",
+            "mfi2020",
+            "mfi2019",
+            "mfi2018",
+            "mfi2017",
+            "mfi2016",
+            "mfi2015",
+            "mfi2014",
+            "mfi2013",
+            "mfi2012",
+            "mfi2011",
+            "mfi2010",
+            "mfi2009",
+            "mfi2008",
+            "mfi2007",
+            "mfi2006",
+            "mfi2005",
+            "mfi2004",
+            "mfi2003",
+            "mfi2002",
+            "mfi2001",
+            "mfi2000"
+        from mficlean 
+        ;
+    """,
+    """
         drop table 
             raw_mfi_2021,
             raw_mfi_2020,
@@ -507,7 +542,8 @@ sql_queries = (
             raw_mfi_2003,
             raw_mfi_2002,
             raw_mfi_2001,
-            raw_mfi_2000
+            raw_mfi_2000,
+            mficlean
         ;
-        """,
+    """,
 )
