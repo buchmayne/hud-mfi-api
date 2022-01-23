@@ -2,3 +2,4 @@ mfi_env/
 data/
 .vscode
 __pycache__
+database.ini
