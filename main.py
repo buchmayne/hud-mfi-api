@@ -6,23 +6,11 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.engine.url import URL
+from create_tables import create_connection_obj
 
 # database
-def create_connection_obj():
-    """Creates engine object from database.ini configuration"""
-    filename = "database.ini"
-    parser = ConfigParser()
-    parser.read(filename)
-
-    params = {k: v for k, v in parser.items("postgresql")}
-    conn = create_engine(URL.create(**params))
-    return conn
-
-
 engine = create_connection_obj()
-
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
 # models
@@ -127,7 +115,7 @@ def get_db():
 
 @app.get("/")
 async def root():
-    return {"message": "github.com/buchmayne/hud-mfi-api"}
+    return {"message": "for more information: github.com/buchmayne/hud-mfi-api"}
 
 
 @app.get("/state/{state_alpha}", response_model=List[SchemaMFI])
